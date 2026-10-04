@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRANESH V U | CSE Portfolio</title>
+    <style>
+        .subpage {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #0f172a;
+            z-index: 5000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity:0;
+            pointer-events: none;}
+
+        .subpage:target {
+            opacity: 1;
+            pointer-events: auto;}
+
+        .subpage-box {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            padding: 3rem;
+            border-radius: 8px;
+            max-width: 500px;
+            text-align: center;}
+
+        .subpage-box h1 {
+            color: #38bdf8;
+            margin-bottom: 1rem;}
+
+        .subpage-box p {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 2rem;}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth}
+
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0}
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background-color: #1e293b;
+            position: sticky;
+            top: 0;
+            z-index: 100; }  
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #38bdf8;}
+
+        .nav-links {
+            display: flex;
+            list-style: none;}
+
+        .nav-links li {
+            margin-left: 2rem}
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s}
+
+        .nav-links a:hover {
+            color: #57c3f1;}
+
+        .hero {
+            height:90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem}
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;}
+        
+
+        .highlight {
+            color: #38bdf8;}
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;}
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            background-color: #38bdf8;
+            color: #0f172a;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s;}
+
+        .btn:hover {
+            background-color: #42aee0;
+            transform:scale(1.05) ;
+          box-shadow:0 0 3px #71d5f1;}
+
+        .projects-section, .skills-section, .contact-section {
+            padding: 5rem 10%;}
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #38bdf8;
+            padding-bottom: 0.5rem;
+            display: inline-block;}
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;}
+
+        .project-card {
+            background-color: #1e293b;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            transition: transform 0.3s;}
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow:0 0 5px rgb(188, 186, 186);}
+
+        .project-card h3 {
+            margin-bottom: 1rem;
+            color: #38bdf8;
+            font: size 2rem;;}
+
+        .project-card p {
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+            }
+
+        .tech-tags span {
+            background-color: #334155;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            display: inline-block;}
+
+        .project-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: #38bdf8;
+            text-decoration: none;
+            transition:0.4s;}
+
+        .project-link:hover{
+            transform: scale(1.05);
+            text-shadow: 0px 0px 3px #64d8e7;}
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            margin-top: 1rem;}
+
+        .skill-container {
+            background-color: #1e293b;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            text-align: left;
+            transition: 0.4s ease;}
+          
+        .skill-container:hover{
+             transform:scale(1.1);}
+
+        .skill-label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            color: #cbd5e1;}
+
+        .battery-casing {
+            width: 100%;
+            height: 30px;
+            background-color: #0f172a;
+            border: 3px solid #475569;
+            border-radius: 6px;
+            position: relative;
+            padding: 2px;
+            display: flex;
+            align-items: center;
+            }
+        
+        .battery-casing::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 6px;
+            width: 5px;
+            height: 12px;
+            background-color: #475569;
+            border-radius: 0 2px 2px 0;}
+
+        .battery-fluid {
+            height: 100%;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+            width: 0%; 
+            animation: fillUp 1s linear both;
+            animation-timeline: view();
+            animation-range: entry 10% cover 40%; }
+
+        
+        .dsa-fill   { --fill: 70%; }
+        .java-fill  {--fill : 50%; }
+        .html-fill  { --fill: 89%; }
+        .py-fill    { --fill: 90%; }
+
+        @keyframes fillUp {
+            from { width: 0%; }
+            to { width: var(--fill); }}
+
+        .contact-section {
+            text-align: center;
+            background-color: #0b0f19;}
+
+        .contact-section p {
+            margin: 1rem 0 2.5rem 0;
+            color: #94a3b8;
+            font-size: 1.1rem;}
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;}
+
+        .navigator-card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;}
+
+        .navigator-card:hover {
+            transform: translateY(-4px);
+            background-color: #38bdf8;
+            color: #0f172a;
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
+            border-color: #38bdf8;} 
+
+        a{text-decoration: none }
+        .links{
+            padding-bottom:20px;
+        }
+        .links:hover{ color:rgb(241, 241, 103);}
+
+        .snowflake {
+             position: absolute;
+             top: -20px;          
+             color: #fff;
+             font-size: 1.5rem;
+             pointer-events: none;
+             animation: fall linear infinite;}    
+
+            @keyframes fall {
+                0% {
+                top: -20px;
+                transform: translateX(0);
+                opacity: 1;}
+                50% {
+                transform: translateX(40px); }
+                100% {
+                top: 105vh;                  
+                transform: translateX(-20px);
+                opacity: 0.3;} }
+
+    .snowflake:nth-child(1) { left: 10%; animation-duration: 6s; animation-delay: 0s; font-size: 1rem; opacity: 0.6; }
+    .snowflake:nth-child(2) { left: 75%; animation-duration: 9s; animation-delay: 2s; font-size: 1.4rem; opacity: 0.6; }
+    .snowflake:nth-child(3) { left: 50%; animation-duration: 7s; animation-delay: 5s; font-size: 0.8rem; }
+    .snowflake:nth-child(4) { left: 55%; animation-duration: 11s; animation-delay: 1s; font-size: 1.8rem; opacity: 0.4; }
+    .snowflake:nth-child(5) { left: 20%; animation-duration: 8s; animation-delay: 4s; font-size: 1.2rem; }
+    .snowflake:nth-child(6) { left: 13%; animation-duration: 9s; animation-delay: 3s; font-size: 0.9rem; opacity: 0.6;}
+    .snowflake:nth-child(7) { left: 75%; animation-duration: 6s; animation-delay: 1.5s; font-size: 1.5rem; }
+    .snowflake:nth-child(8) { left: 18%; animation-duration: 8.5s;animation-delay: 3.5s; font-size: 1.1rem; }
+    .snowflake:nth-child(9) { left: 38%; animation-duration: 12s; animation-delay: 0.5s; font-size: 0.7rem; opacity: 0.4; }
+    .snowflake:nth-child(10) { left: 64%; animation-duration: 11.5s;animation-delay: 2.5s; font-size: 1.3rem; }
+    .snowflake:nth-child(11) { left: 68%; animation-duration: 10s; animation-delay: 0.5s;font-size: 0.7rem; opacity: 0.6;}
+    .snowflake:nth-child(12) { left: 10%; animation-duration: 7.5s;animation-delay: 2.5s; font-size: 1.3rem; }
+    .snowflake:nth-child(13) { left:27%; animation-duration: 8s; animation-delay: 1.5s;font-size: 0.7rem;  opacity: 0.4;}
+    .snowflake:nth-child(14) { left: 90%; animation-duration: 7.5s;animation-delay: 2.5s; font-size: 1.3rem; }
+    .snowflake:nth-child(15) { left: 47%; animation-duration: 10s; animation-delay: 0.5s; font-size: 0.7rem; opacity: 0.6;}
+  </style>
+</head>
+<body>
+
+  <div id="LP" class="subpage">
+        <div class="subpage-box">
+            <a href="https://github.com/PRANESHVU/landing-page.git"><h1 class="links">LANDING PAGE</h1></a>
+            <p> This the is link to the landing page buil using only CSS and HTML.</p>
+            <a href="#projects" class="btn">← Back to Main Portfolio</a>
+        </div>
+  </div>
+
+  <div id="CALCULATOR" class="subpage">
+        <div class="subpage-box">
+            <a href="https://github.com/PRANESHVU/daily-task.git"><h1 class="links">CALCULATOR</h1></a>
+            <a href="#projects" class="btn">← Back to Main Portfolio</a>
+        </div>
+  </div>
+
+  
+  <nav class="navbar">
+        <div class="logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+  </nav>
+
+  <header id="about" class="hero">
+        <h1>Hi, I'm <span class="highlight">PRANESH V U</span></h1>
+        <p>Computer Science Engineering Student & Software Developer</p>
+        <a href="#projects" class="btn">View My Work</a>
+  </header>
+
+  <section id="projects" class="projects-section">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Landing Page</h3>
+                <p>A landing page of of an travel agency.</p>
+                <div class="tech-tags"><span>HTML</span> <span>CSS</span></div>
+                <a href="#LP" class="project-link">View Code Details →</a>
+            </div>
+            <div class="project-card">
+                <h3>Portfolio</h3>
+                <p>A personalised page about myself</p>
+                <div class="tech-tags"><span>HTML</span> <span>CSS</span></div>
+                <a href="#CALCULATOR" class="project-link">View Code Details →</a>
+            </div>
+        </div>
+  </section>
+
+  <section id="skills" class="skills-section">
+    <h2>Learning Progress</h2>
+    <div class="skills-grid">
+        <div class="skill-container">
+            <div class="skill-label">
+                <span>Data Structures</span>
+                <span>70%</span>
+            </div>
+            <div class="battery-casing">
+                <div class="battery-fluid dsa-fill"></div>
+            </div>
+        </div>
+
+        <div class="skill-container">
+            <div class="skill-label">
+                <span>C</span>
+                <span>50%</span>
+            </div>
+            <div class="battery-casing">
+                <div class="battery-fluid java-fill"></div>
+            </div>
+        </div>
+
+        <div class="skill-container">
+            <div class="skill-label">
+                <span>HTML & CSS</span>
+                <span>89%</span>
+            </div>
+            <div class="battery-casing">
+                <div class="battery-fluid html-fill"></div>
+            </div>
+        </div>
+
+        <div class="skill-container">
+            <div class="skill-label">
+                <span>Python </span>
+                <span>90%</span>
+            </div>
+            <div class="battery-casing">
+                 <div class="battery-fluid py-fill"></div>
+            </div>
+        </div>
+    </div>
+  </section>
+   
+  <footer class="contact-section" id="contact">
+    <h2>Get In Touch</h2>
+    <p>Click below to track my code repos or launch a message stream straight to my inbox.</p>
+    <div class="social-links">
+        <a href="https://github.com/PRANESHVU" target="_blank" class="navigator-card">
+            <span class="icon">💻</span> GitHub Profile
+        </a>
+        <a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSGMTCKVnJmNfwHDFQvczMwPPcbXJrkzNZqpkDRpfLLQFNqQWtzTVpjfNmhxgDTtnTwmdVrN" target="_blank" class="navigator-card">
+            <span class="icon">✉</span> Send Direct Mail
+        </a>
+        
+    </div>
+  </footer>
+  <div class="snowflake">❄</div>
+   <div class="snowflake">❅</div>
+   <div class="snowflake">❆</div>
+   <div class="snowflake">•</div>
+   <div class="snowflake">❄</div>
+   <div class="snowflake">❅</div>
+   <div class="snowflake">❆</div>
+   <div class="snowflake">❆</div>
+   <div class="snowflake">•</div>
+   <div class="snowflake">❄</div>
+   <div class="snowflake">❅</div>
+   <div class="snowflake">❆</div>
+   <div class="snowflake">•</div>
+   <div class="snowflake">❄</div>
+   <div class="snowflake">❅</div>
+</body>
+</html>
